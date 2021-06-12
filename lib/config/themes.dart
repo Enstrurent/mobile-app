@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Dark Theme Colors
@@ -9,8 +10,9 @@ const darkError = Color(0xFFBA1B1D);
 
 class Themes {
   static final ThemeData lightTheme = ThemeData.light();
-
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
+    brightness: Brightness.dark,
+    canvasColor: Colors.white,
     primaryColor: darkPrimary,
     accentColor: darkAccent,
     backgroundColor: darkBackground,
@@ -20,8 +22,8 @@ class Themes {
       elevation: 10,
       backgroundColor: darkBackground,
       titleTextStyle: TextStyle(
-        fontFamily: "Satisfy",
-        fontWeight: FontWeight.bold,
+        fontFamily: "BebasNeue",
+        fontSize: 28,
         letterSpacing: 2,
         color: darkPrimary
       )
