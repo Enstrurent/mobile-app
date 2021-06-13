@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 const darkBackground = Color(0xFF35323A);
 const darkPrimary = Color(0xFFD9B54A);
 const darkAccent = Color(0xFF929A9E);
-const darkError = Color(0xFFBA1B1D);
 // Light Theme Colors
 
 class Themes {
@@ -16,7 +15,7 @@ class Themes {
     primaryColor: darkPrimary,
     accentColor: darkAccent,
     backgroundColor: darkBackground,
-    errorColor: darkError,
+    errorColor: Colors.red,
     appBarTheme: AppBarTheme(
       brightness: Brightness.dark,
       elevation: 10,
