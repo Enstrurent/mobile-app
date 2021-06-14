@@ -7,7 +7,7 @@ enum Request { POST, GET, DELETE, PUT }
 
 class HttpRequest {
   SecureStore _store = SecureStore();
-  String host;
+  String host = "";
   var dioObj = dio.Dio(); //  For sending multipart files with form-data.
   String token = "";
   Map<String, String> headers = {
@@ -53,7 +53,7 @@ class HttpRequest {
     }
   }
 
-  Future<int> sendFormData(String uri, dynamic body) async {
+  Future<int?> sendFormData(String uri, dynamic body) async {
     await _putTokenToHeaders();
     try {
       var response = await dioObj.post(uri,

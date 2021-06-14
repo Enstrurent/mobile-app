@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class LoadingController extends GetxController {
   Auth _auth = Auth();
 
-  callNavigate() => SchedulerBinding.instance.addPostFrameCallback((_) {
+  callNavigate() => SchedulerBinding.instance!.addPostFrameCallback((_) {
         _navigateToPage();
       });
 

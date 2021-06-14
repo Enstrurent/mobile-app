@@ -8,24 +8,30 @@ part of 'client.dart';
 
 Client _$ClientFromJson(Map<String, dynamic> json) {
   return Client(
-    json['id'] as String,
-    DateTime.parse(json['CreatedAt'] as String),
-    DateTime.parse(json['UpdatedAt'] as String),
-    DateTime.parse(json['DeletedAt'] as String),
-    json['name'] as String,
-    json['surname'] as String,
-    json['email'] as String,
-    json['phone_number'] as String,
-    json['image_name'] as String,
-    json['address_id'] as String,
+    id: json['id'] as String?,
+    CreatedAt: json['CreatedAt'] == null
+        ? null
+        : DateTime.parse(json['CreatedAt'] as String),
+    UpdatedAt: json['UpdatedAt'] == null
+        ? null
+        : DateTime.parse(json['UpdatedAt'] as String),
+    DeletedAt: json['DeletedAt'] == null
+        ? null
+        : DateTime.parse(json['DeletedAt'] as String),
+    name: json['name'] as String,
+    surname: json['surname'] as String,
+    email: json['email'] as String,
+    phone_number: json['phone_number'] as String,
+    image_name: json['image_name'] as String?,
+    address_id: json['address_id'] as String?,
   );
 }
 
 Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
       'id': instance.id,
-      'CreatedAt': instance.CreatedAt.toIso8601String(),
-      'UpdatedAt': instance.UpdatedAt.toIso8601String(),
-      'DeletedAt': instance.DeletedAt.toIso8601String(),
+      'CreatedAt': instance.CreatedAt?.toIso8601String(),
+      'UpdatedAt': instance.UpdatedAt?.toIso8601String(),
+      'DeletedAt': instance.DeletedAt?.toIso8601String(),
       'name': instance.name,
       'surname': instance.surname,
       'email': instance.email,

@@ -6,7 +6,11 @@ class Button extends StatelessWidget {
   final VoidCallback onClick;
   final Color buttonColor;
 
-  Button({this.text, this.onClick, this.buttonColor, Key key})
+  Button(
+      {required this.text,
+      required this.onClick,
+      required this.buttonColor,
+      Key? key})
       : super(key: key);
 
   @override
@@ -18,8 +22,7 @@ class Button extends StatelessWidget {
             elevation: MaterialStateProperty.all(5),
             minimumSize: MaterialStateProperty.all(Size(130, 45))),
         child: Text(text,
-
-            style: Get.textTheme.bodyText1.copyWith(
+            style: Get.textTheme.bodyText1!.copyWith(
                 fontFamily: "BebasNeue", fontSize: 18, letterSpacing: 2)));
   }
 }

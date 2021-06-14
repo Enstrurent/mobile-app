@@ -4,36 +4,36 @@ part 'renter.g.dart';
 
 @JsonSerializable()
 class Renter {
-  final String id;
-  final DateTime CreatedAt;
-  DateTime UpdatedAt;
-  DateTime DeletedAt;
+  final String? id;
+  final DateTime? CreatedAt;
+  DateTime? UpdatedAt;
+  DateTime? DeletedAt;
   final String name;
   final String surname;
   final String email;
   final String store_info;
   final String store_name;
   final String phone_number;
-  final double rating;
-  final String profile_pic_name;
-  final String header_pic_name;
-  final String address_id;
+  final double? rating;
+  final String? profile_pic_name;
+  final String? header_pic_name;
+  final String? address_id;
 
   Renter(
-      this.id,
+      {this.id,
       this.CreatedAt,
       this.UpdatedAt,
       this.DeletedAt,
-      this.name,
-      this.surname,
-      this.email,
-      this.store_info,
-      this.store_name,
-      this.phone_number,
+      required this.name,
+      required this.surname,
+      required this.email,
+      required this.store_info,
+      required this.store_name,
+      required this.phone_number,
       this.rating,
       this.profile_pic_name,
       this.header_pic_name,
-      this.address_id);
+      this.address_id});
 
   factory Renter.fromJson(Map<String, dynamic> json) => _$RenterFromJson(json);
 

@@ -36,7 +36,7 @@ class LoginController extends GetxController {
             });
             return true;
           } catch (e) {
-            log(e, name: "Error on saving credentials ");
+            log(e.toString(), name: "Error on saving credentials ");
             return false;
           }
         } else if (response.statusCode == HttpStatus.unauthorized) {
