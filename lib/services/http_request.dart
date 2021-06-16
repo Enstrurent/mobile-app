@@ -1,11 +1,12 @@
 import 'dart:developer';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart' as dio;
 import 'package:enstrurent/services/secure_store.dart';
 
 enum Request { POST, GET, DELETE, PUT }
 
-class HttpRequest {
+class HttpRequest extends GetxController {
   SecureStore _store = SecureStore();
   String host = "";
   var dioObj = dio.Dio(); //  For sending multipart files with form-data.

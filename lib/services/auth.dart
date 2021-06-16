@@ -29,7 +29,7 @@ class Auth {
   }
 
   Future<bool> validateToken() async {
-    HttpRequest reqSender = HttpRequest();
+    HttpRequest reqSender = Get.find();
     var response = await reqSender.send("auth/validate", Request.POST);
     if (response.statusCode == 200)
       return true;

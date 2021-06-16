@@ -167,7 +167,7 @@ class SignUpController extends GetxController {
       _onWait.value = true;
       var jsonObj = createJson();
       log(jsonObj.toString(), name: "jsonObj");
-      HttpRequest requestSender = HttpRequest();
+      HttpRequest requestSender = Get.find();
       var response = await requestSender.send("auth/sign_up", Request.POST,
           body: jsonObj, sendToken: false);
       _onWait.value = false;

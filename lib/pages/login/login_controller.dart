@@ -12,8 +12,7 @@ import 'package:get/get_connect/http/src/status/http_status.dart';
 class LoginController extends GetxController {
   TextEditingController emailText = TextEditingController();
   TextEditingController passwordText = TextEditingController();
-  HttpRequest _reqSender = HttpRequest();
-  SecureStore _store = SecureStore();
+  HttpRequest _reqSender = Get.find();
   var onWait = false.obs;
 
   Future<bool> loginRequest() async {
