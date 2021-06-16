@@ -31,7 +31,9 @@ Renter _$RenterFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RenterToJson(Renter instance) => <String, dynamic>{
+Map<String, dynamic> _$RenterToJson(Renter instance) {
+  if (instance.id != null)
+    return <String, dynamic>{
       'id': instance.id,
       'CreatedAt': instance.CreatedAt?.toIso8601String(),
       'UpdatedAt': instance.UpdatedAt?.toIso8601String(),
@@ -47,3 +49,12 @@ Map<String, dynamic> _$RenterToJson(Renter instance) => <String, dynamic>{
       'header_pic_name': instance.header_pic_name,
       'address_id': instance.address_id,
     };
+  else return <String, dynamic>{
+    'name': instance.name,
+    'surname': instance.surname,
+    'email': instance.email,
+    'store_info': instance.store_info,
+    'store_name': instance.store_name,
+    'phone_number': instance.phone_number,
+  };
+}

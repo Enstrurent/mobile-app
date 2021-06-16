@@ -49,4 +49,17 @@ class Auth {
     else
       getSnackBar("error".tr, "went_wrong".tr);
   }
+
+  static bool saveAuthToLocal(Map resBody) {
+    SecureStore store = SecureStore();
+    try {
+      resBody.forEach((key, value) async {
+        await store.writeValue(key, value);
+      });
+      return true;
+    } catch (e) {
+      log(e.toString(), name: "Error on saving credentials ");
+      return false;
+    }
+  }
 }

@@ -41,7 +41,10 @@ class HttpRequest {
     switch (type) {
       case Request.POST:
         return await http.post(url,
-            headers: sendToken ? headers : null, body: body);
+            headers: sendToken
+                ? headers
+                : {'Content-Type': 'application/json; charset=UTF-8'},
+            body: body);
       case Request.PUT:
         return await http.put(url, body: body, headers: headers);
       case Request.GET:

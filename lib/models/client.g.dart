@@ -27,7 +27,9 @@ Client _$ClientFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
+Map<String, dynamic> _$ClientToJson(Client instance) {
+  if (instance.id != null)
+    return <String, dynamic>{
       'id': instance.id,
       'CreatedAt': instance.CreatedAt?.toIso8601String(),
       'UpdatedAt': instance.UpdatedAt?.toIso8601String(),
@@ -39,3 +41,10 @@ Map<String, dynamic> _$ClientToJson(Client instance) => <String, dynamic>{
       'image_name': instance.image_name,
       'address_id': instance.address_id,
     };
+  else return <String, dynamic>{
+    'name': instance.name,
+    'surname': instance.surname,
+    'email': instance.email,
+    'phone_number': instance.phone_number,
+  };
+}

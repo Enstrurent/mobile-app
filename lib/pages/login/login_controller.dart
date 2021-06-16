@@ -27,19 +27,9 @@ class LoginController extends GetxController {
         var response = await _reqSender.send("/auth/login", Request.POST,
             body: body, sendToken: false);
 
-        if (response.statusCode == HttpStatus.ok) {
-          try {
-            Map resBody = json.decode(response.body);
-            log("LOG ${resBody["token"]} ${resBody["role"]}");
-            resBody.forEach((key, value) async {
-             await _store.writeValue(key, value);
-            });
-            return true;
-          } catch (e) {
-            log(e.toString(), name: "Error on saving credentials ");
-            return false;
-          }
-        } else if (response.statusCode == HttpStatus.unauthorized) {
+        if (response.statusCode == HttpStatus.ok)
+          return Auth.saveAuthToLocal(json.decode(response.body));
+        else if (response.statusCode == HttpStatus.unauthorized) {
           getSnackBar("error".tr, "wrong_email_pass".tr);
           return false;
         } else {

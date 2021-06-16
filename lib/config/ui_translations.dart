@@ -32,7 +32,8 @@ class UITranslations extends Translations {
           "name":"AD",
           "surname":"SOYAD",
           "confirm": "ONAYLA",
-          "next": "İLERİ"
+          "next": "İLERİ",
+          "already_signed_in_err": "Bu e-posta ile zaten kayıtlı!"
 
         },
         "en_US": {
@@ -64,7 +65,8 @@ class UITranslations extends Translations {
           "name":"NAME",
           "surname":"SURNAME",
           "confirm": "CONFIRM",
-          "next": "NEXT"
+          "next": "NEXT",
+          "already_signed_in_err": "This email is already registered."
         },
       };
 }
