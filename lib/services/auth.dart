@@ -20,7 +20,6 @@ class Auth {
     if (await validateToken()) {
       Roles selectedRole = Roles.GUEST;
       var role = await secure.readValue("role");
-      log("Role $role");
       Roles.values.forEach((element) {
         if (role == roleString[element]) selectedRole = element;
       });
