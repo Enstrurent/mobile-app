@@ -33,7 +33,9 @@ class UITranslations extends Translations {
           "surname":"SOYAD",
           "confirm": "ONAYLA",
           "next": "İLERİ",
-          "already_signed_in_err": "Bu e-posta ile zaten kayıtlı!"
+          "already_signed_in_err": "Bu e-posta ile zaten kayıtlı!",
+          "for_rent":"Kiralık",
+          "for_sale":"Satılık"
 
         },
         "en_US": {
@@ -66,7 +68,9 @@ class UITranslations extends Translations {
           "surname":"SURNAME",
           "confirm": "CONFIRM",
           "next": "NEXT",
-          "already_signed_in_err": "This email is already registered."
+          "already_signed_in_err": "This email is already registered.",
+          "for_rent":"For Rent",
+          "for_sale":"For Sale"
         },
       };
 }

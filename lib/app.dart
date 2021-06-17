@@ -7,6 +7,7 @@ import 'package:enstrurent/pages/login/login_view.dart';
 import 'package:enstrurent/config/ui_translations.dart';
 import 'package:enstrurent/pages/renter/home/home_view.dart';
 import 'package:enstrurent/pages/sign_up/sign_up_view.dart';
+import 'package:enstrurent/pages/single_product/single_product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,8 @@ class App extends StatelessWidget {
       GetPage(name: "/login", page: () => LoginView()),
       GetPage(name: "/sign_up", page: () => SignUpView()),
       GetPage(name: "/renter", page: () => RenterHome()),
-      GetPage(name: "/client", page: () => ClientHome())
+      GetPage(name: "/client", page: () => ClientHome()),
+      GetPage(name: "/single_product", page: () => SingleProductView())
     ],
   );
 }

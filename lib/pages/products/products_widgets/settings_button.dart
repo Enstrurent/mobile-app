@@ -1,4 +1,4 @@
-part of 'products_view.dart';
+part of '../products_view.dart';
 
 class SettingsButton extends StatelessWidget {
   @override

@@ -28,7 +28,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
     json['deposit_price'] as int,
     json['stock_quantity'] as int,
     (json['delivery_types'] as List<dynamic>).map((e) => e as String).toList(),
-    (json['images_names'] as List<dynamic>).map((e) => e as String).toList(),
+    json['image_names'] != null ? (json['images_names'] as List<dynamic>).map((e) => e as String).toList() : [],
     (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
