@@ -33,11 +33,11 @@ class ImageCard extends StatelessWidget {
                 Visibility(
                     visible: isForRent,
                     child: _badge(
-                        "for_rent".tr + ": $rentalPrice₺", Get.theme.primaryColor.withAlpha(200))),
+                        "for_rent".tr + ": $rentalPrice₺", Get.theme.primaryColor.withAlpha(220))),
                 Visibility(
                     visible: isForSale,
                     child:
-                    _badge("for_sale".tr + ": $salePrice₺", Get.theme.accentColor.withAlpha(200)))
+                    _badge("for_sale".tr + ": $salePrice₺", Get.theme.accentColor.withAlpha(220)))
               ],
             ),
 

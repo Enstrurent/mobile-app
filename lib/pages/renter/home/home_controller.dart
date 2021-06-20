@@ -1,27 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:enstrurent/pages/renter/add_product/add_product_view.dart';
 
 class HomeController extends GetxController {
+  List<String> menuNames = ["inventory".tr, "add_product".tr, "profile".tr];
+  late List<BottomNavigationBarItem> renterNavItems;
 
-  List<BottomNavigationBarItem> clientNavItems = [
-    BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.guitars), label: "Enstrümanlar"),
-    BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart), label: "Sepet"),
-    BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: "Profil"),
-  ];
-
+  @override
+  void onInit() {
+    super.onInit();
+    pageController = PageController(initialPage: 1).obs;
+    renterNavItems = [
+      BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.cube_box), label: menuNames[0]),
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.add_circled), label: menuNames[1]),
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: menuNames[2])
+    ];
+  }
 
   Widget createNavbar(List<BottomNavigationBarItem> navbarItems) => ClipRRect(
       borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(30),
+        topLeft: Radius.circular(40),
         topRight: Radius.circular(30),
       ),
       child: BottomNavigationBar(
           currentIndex: getSelectedIndex,
           items: navbarItems,
           onTap: onItemTapped,
-          backgroundColor: Get.theme.backgroundColor,
+          backgroundColor: Get.theme.bottomNavigationBarTheme.backgroundColor,
           unselectedItemColor: Get.theme.accentColor,
           selectedItemColor: Get.theme.primaryColor,
           showSelectedLabels: false,
@@ -36,15 +43,10 @@ class HomeController extends GetxController {
 
   onItemTapped(int index) {
     selectedIndex.value = index;
-    print("$index  ${selectedIndex.value}");
     update();
   }
 
   int get getSelectedIndex => selectedIndex.value;
+  String get currentMenuName => menuNames[selectedIndex.value];
 
-  @override
-  void onInit() {
-    super.onInit();
-    pageController = PageController(initialPage: 1).obs;
-  }
 }
