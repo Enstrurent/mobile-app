@@ -11,7 +11,7 @@ class ProductController extends GetxController {
   RxList products = List.empty(growable: true).obs;
   var onWait = false.obs;
 
-  getAllProducts() async {
+  Future<void> getAllProducts() async {
     onWait.value = true;
     var response = await _request.send("products/", Request.GET, sendToken: false);
     if(response.statusCode == HttpStatus.ok) {

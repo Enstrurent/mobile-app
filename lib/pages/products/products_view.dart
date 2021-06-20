@@ -36,23 +36,31 @@ class ProductsView extends StatelessWidget {
           ],
         ),
         drawer: ProductDrawer(),
-        body: Obx(
-          () => _controller.onWait.value
-              ? Center(
-                  child: SpinKitCircle(
-                  color: Get.theme.primaryColor,
-                  size: 60,
-                ))
-              : StaggeredGridView.countBuilder(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 12,
-                  itemCount: _controller.products.length,
-                  staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-                  itemBuilder: (context, index) => buildProductCard(
-                      (_controller.products[index] as Product),
-                      "https://source.unsplash.com/random/$index"),
-                ),
+        body: RefreshIndicator(
+          backgroundColor: Get.theme.backgroundColor,
+          color: Get.theme.primaryColor,
+          onRefresh: () {
+            _controller.products.clear();
+            return _controller.getAllProducts();
+          },
+          child: Obx(
+            () => _controller.onWait.value
+                ? Center(
+                    child: SpinKitCircle(
+                    color: Get.theme.primaryColor,
+                    size: 60,
+                  ))
+                : StaggeredGridView.countBuilder(
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 12,
+                    itemCount: _controller.products.length,
+                    staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+                    itemBuilder: (context, index) => buildProductCard(
+                        (_controller.products[index] as Product),
+                        "https://source.unsplash.com/random/$index"),
+                  ),
+          ),
         ));
   }
 

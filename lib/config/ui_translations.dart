@@ -35,7 +35,10 @@ class UITranslations extends Translations {
           "next": "İLERİ",
           "already_signed_in_err": "Bu e-posta ile zaten kayıtlı!",
           "for_rent":"Kiralık",
-          "for_sale":"Satılık"
+          "for_sale":"Satılık",
+          "inventory": "ENVANTER",
+          "add_product": "ÜRÜN EKLE",
+          "profile": "PROFİL"
 
         },
         "en_US": {
@@ -70,7 +73,10 @@ class UITranslations extends Translations {
           "next": "NEXT",
           "already_signed_in_err": "This email is already registered.",
           "for_rent":"For Rent",
-          "for_sale":"For Sale"
+          "for_sale":"For Sale",
+          "inventory": "INVENTORY",
+          "add_product": "ADD PRODUCT",
+          "profile": "PROFILE"
         },
       };
 }

@@ -16,8 +16,8 @@ class HttpRequest extends GetxController {
   }; // TODO: add app key to headers
 
   HttpRequest() {
-    host = "enstrurent-backend.herokuapp.com";
-    dioObj.options.baseUrl = "https://$host";
+    host = "i-return-294414.appspot.com";
+    dioObj.options.baseUrl = "http://$host";
   }
 
   Future<bool> _putTokenToHeaders() async {
