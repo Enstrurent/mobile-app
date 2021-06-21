@@ -61,4 +61,10 @@ class Auth {
       return false;
     }
   }
+
+  static signOut() {
+    SecureStore _store = SecureStore();
+    _store.resetAll();
+    Get.offAllNamed("/");
+  }
 }

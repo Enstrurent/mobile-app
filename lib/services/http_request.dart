@@ -19,6 +19,7 @@ class HttpRequest extends GetxController {
     host = "***REMOVED***";
     dioObj.options.baseUrl = "http://$host";
   }
+  String get hostName => "http://$host";
 
   Future<bool> _putTokenToHeaders() async {
     if (token == "") {
