@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:enstrurent/services/auth.dart';
 import 'package:enstrurent/services/secure_store.dart';
 import 'package:flutter/material.dart';
 import 'package:enstrurent/widgets/index.dart' as widgets;
@@ -20,11 +21,7 @@ class ClientHome extends StatelessWidget {
     return Container(
       child: SafeArea(
         child: Center(child: widgets.Button(
-          onClick: () {
-            SecureStore _store = SecureStore();
-            _store.resetAll();
-            Get.offAllNamed("/");
-          },
+          onClick: () => Auth.signOut(),
           text: "sign_out".tr,
           buttonColor: Get.theme.backgroundColor,
         )),

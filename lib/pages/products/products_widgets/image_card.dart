@@ -20,7 +20,12 @@ class ImageCard extends StatelessWidget {
       alignment: AlignmentDirectional.topStart,
       children: [
         Card(
-          child: Image.network(imageURL),
+          child: CachedNetworkImage(
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                LinearProgressIndicator(value: downloadProgress.progress, minHeight: 30),
+            imageUrl: imageURL,
+            fit: BoxFit.cover,
+          ),
           elevation: 10,
           margin: EdgeInsets.zero,
         ),

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:enstrurent/models/product.dart';
 import 'package:enstrurent/pages/products/products_controller.dart';
 import 'package:enstrurent/pages/products/products_widgets/product_drawer.dart';

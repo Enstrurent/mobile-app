@@ -19,6 +19,7 @@ class HttpRequest extends GetxController {
     host = "i-return-294414.appspot.com";
     dioObj.options.baseUrl = "http://$host";
   }
+  String get hostName => "http://$host";
 
   Future<bool> _putTokenToHeaders() async {
     if (token == "") {
