@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:enstrurent/pages/renter/add_product/add_product_view.dart';
 
-class HomeController extends GetxController {
+class RenterHomeController extends GetxController {
   List<String> menuNames = ["inventory".tr, "add_product".tr, "profile".tr];
   late List<BottomNavigationBarItem> renterNavItems;
 
