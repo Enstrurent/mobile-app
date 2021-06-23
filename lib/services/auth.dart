@@ -14,7 +14,6 @@ Map<Roles, String> roleString = {
 };
 
 class Auth {
-
   Future<Roles> validateCurrentUser() async {
     var secure = SecureStore();
     if (await validateToken()) {
@@ -39,14 +38,11 @@ class Auth {
 
   static navigateTo() async {
     var secure = SecureStore();
-    String role = await secure.readValue("role");
+    dynamic role = await secure.readValue("role");
 
-    if (role == roleString[Roles.CLIENT])
-      Get.offAllNamed("/client");
-    else if (role == roleString[Roles.RENTER])
-      Get.offNamed("/renter");
-    else
-      getSnackBar("error".tr, "went_wrong".tr);
+    role != null
+        ? Get.offAllNamed("/${role.toString()}")
+        : getSnackBar("error".tr, "went_wrong".tr);
   }
 
   static bool saveAuthToLocal(Map resBody) {
