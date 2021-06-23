@@ -20,9 +20,10 @@ Widget _headerPhoto() => Stack(
           padding: EdgeInsets.only(bottom: 40),
           height: 200,
           width: 400,
-          child: Image.network(
-            "https://source.unsplash.com/random/8",
+          child: CachedNetworkImage(
+            imageUrl: "https://source.unsplash.com/random/9",
             fit: BoxFit.fill,
+            placeholder: (context, url) => LinearProgressIndicator(),
           ),
         ),
         Wrap(children: [
@@ -48,7 +49,7 @@ Widget _avatar() => Stack(
       children: [
         CircleAvatar(
           radius: 50,
-          backgroundImage: NetworkImage("https://source.unsplash.com/random/2"),
+          backgroundImage: CachedNetworkImageProvider("https://source.unsplash.com/random/2"),
         ),
         Positioned(width: 30, right: 70, top: 60, child: circleButton()),
       ],
