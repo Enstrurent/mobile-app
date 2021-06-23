@@ -1,7 +1,6 @@
 import 'package:enstrurent/config/themes.dart';
 import 'package:enstrurent/pages/client/home/home_view.dart';
 import 'package:enstrurent/pages/guest/home/home_view.dart';
-import 'package:enstrurent/pages/guest/home/home_bindings.dart';
 import 'package:enstrurent/pages/loading/loading_view.dart';
 import 'package:enstrurent/pages/login/login_view.dart';
 import 'package:enstrurent/config/ui_translations.dart';
@@ -26,7 +25,7 @@ class App extends StatelessWidget {
     initialRoute: "/",
     getPages: [
       GetPage(name: "/", page: () => LoadingView()),
-      GetPage(name: "/guest", page: () => GuestHome(), binding: HomeBinding()),
+      GetPage(name: "/guest", page: () => GuestHome()),
       GetPage(name: "/login", page: () => LoginView()),
       GetPage(name: "/sign_up", page: () => SignUpView()),
       GetPage(name: "/renter", page: () => RenterHome(), binding: RenterBindings()),
