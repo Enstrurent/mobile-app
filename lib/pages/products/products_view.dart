@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:enstrurent/models/product.dart';
 import 'package:enstrurent/pages/products/products_controller.dart';
+import 'package:enstrurent/pages/products/products_widgets/build_product_card.dart';
 import 'package:enstrurent/pages/products/products_widgets/product_drawer.dart';
 import 'package:enstrurent/widgets/index.dart' as widgets;
 import 'package:flutter/cupertino.dart';
@@ -57,27 +58,13 @@ class ProductsView extends StatelessWidget {
                     crossAxisSpacing: 12,
                     itemCount: _controller.products.length,
                     staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-                    itemBuilder: (context, index) => buildProductCard(
-                        (_controller.products[index] as Product),
-                        "https://source.unsplash.com/random/$index"),
+                    itemBuilder: (context, index) => BuildProductCard(
+                        product: (_controller.products[index] as Product),
+                        imageURL: "https://source.unsplash.com/random/$index"),
                   ),
           ),
         ));
   }
 
-  Widget buildProductCard(Product product, String imageURL) => MaterialButton(
-        splashColor: Get.theme.primaryColor,
-        padding: EdgeInsets.all(1),
-        onPressed: () => Get.toNamed("/single_product", arguments: {"product": product}),
-        child: Column(
-          children: [
-            ImageCard(
-                imageURL: imageURL,
-                isForRent: product.is_rental,
-                isForSale: product.is_open_to_sell,
-            rentalPrice: product.daily_price, salePrice: product.full_price,),
-            BottomInfoCard(title: product.generateTitle())
-          ],
-        ),
-      );
+
 }

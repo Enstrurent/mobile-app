@@ -5,6 +5,7 @@ import 'package:enstrurent/pages/guest/home/home_bindings.dart';
 import 'package:enstrurent/pages/loading/loading_view.dart';
 import 'package:enstrurent/pages/login/login_view.dart';
 import 'package:enstrurent/config/ui_translations.dart';
+import 'package:enstrurent/pages/renter/editable_product/editable_product_view.dart';
 import 'package:enstrurent/pages/renter/home/home_view.dart';
 import 'package:enstrurent/pages/renter/home/renter_bindings.dart';
 import 'package:enstrurent/pages/sign_up/sign_up_view.dart';
@@ -30,7 +31,8 @@ class App extends StatelessWidget {
       GetPage(name: "/sign_up", page: () => SignUpView()),
       GetPage(name: "/renter", page: () => RenterHome(), binding: RenterBindings()),
       GetPage(name: "/client", page: () => ClientHome()),
-      GetPage(name: "/single_product", page: () => SingleProductView())
+      GetPage(name: "/single_product", page: () => SingleProductView()),
+      GetPage(name: "/editable_product", page: () => EditableProductView())
     ],
   );
 }
