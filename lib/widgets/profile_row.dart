@@ -22,12 +22,7 @@ class ProfileRow extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(headline,
-                        style: Get.textTheme.bodyText2!.copyWith(
-                          fontFamily: "BebasNeue",
-                            fontSize: 18,
-                            letterSpacing: 2.5,
-                            color: Get.theme.primaryColor,
-                            fontWeight: FontWeight.bold)),
+                        style: Get.textTheme.headline4),
                     SizedBox(height: 5),
                     Text(
                       text,
