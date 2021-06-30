@@ -1,27 +1,29 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:enstrurent/config/themes.dart';
+import 'package:enstrurent/widgets/index.dart' as widgets;
 
-import 'package:enstrurent/pages/renter/add_product/widgets/photo_card.dart';
-import 'package:enstrurent/services/photo_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddProductController extends GetxController {
   StepperType stepperType = StepperType.horizontal;
   var currentStep = 0.obs;
-  var singleFile;
-  Widget? emptyPhotoCard;
-  var aspectRatio = (4 / 3).obs;
+  Map<String, dynamic> _productInformation = {};
 
-  RxList<File> photos = RxList<File>();
-  RxList<Widget> photoCards = RxList<Widget>();
+  List<File>? _photos = List.empty(growable: true);
 
   @override
   void onInit() {
     super.onInit();
-    emptyPhotoCard = PhotoCard(getImageFunc: emptyCardFunction);
-    photoCards.add(emptyPhotoCard!);
+  }
+
+  set photos(RxList<File> list) =>
+    _photos = list.toList();
+
+  set setProductInformation(Map<String, dynamic> data) {
+    _productInformation.addAll(data);
+    log(_productInformation.toString());
   }
 
   void onStepTapped(int value) => currentStep.value = value;
@@ -29,36 +31,6 @@ class AddProductController extends GetxController {
   void onStepCancel() => currentStep.value--;
 
   void onStepContinue() => currentStep.value++;
-
-  PhotoCard createPhotoCard(File file) =>
-      PhotoCard(image: file, deleteFunc: createDeleteFunction(file.path));
-
-  VoidCallback createDeleteFunction(String filePath) {
-    return () {
-      String path = filePath;
-      log(path, name: "PATH");
-      photos.removeWhere((element) => element.path == path);
-      photoCards.clear();
-      photoCards.addAll(photos.map((element) => createPhotoCard(element)));
-      photoCards.add(emptyPhotoCard!);
-      update();
-    };
-  }
-
-  emptyCardFunction() async {
-    singleFile = await PhotoService.getSelectionDialog();
-    if (singleFile is File) {
-      photos.add(singleFile!);
-      PhotoCard currentCard = createPhotoCard(singleFile);
-      photoCards.insert(photos.length - 1, currentCard);
-      singleFile = null;
-      if (photos.length >= 4) photoCards.remove(emptyPhotoCard);
-      if (photos.length == 1)
-        aspectRatio.value = await PhotoService.getAspectRatio(photos[0]);
-      update();
-    } else
-      log("singleFile var is null", name: "On empty card function");
-  }
 
   String stepperTitle() {
     switch (currentStep.value) {
@@ -74,4 +46,31 @@ class AddProductController extends GetxController {
         return "";
     }
   }
+
+  Widget nextBackButtons(
+          {VoidCallback? backFunction,
+          VoidCallback? nextFunction,
+          String next = "İLERİ",
+          Icon? nextIcon}) =>
+      Padding(
+        padding: EdgeInsets.only(bottom: 20, top: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            backFunction != null
+                ? widgets.Button(
+                    text: "GERİ",
+                    onClick: backFunction,
+                    buttonColor: Get.theme.accentColor)
+                : SizedBox(height: 10, width: 110),
+            nextFunction != null
+                ? widgets.Button(
+                    icon: nextIcon,
+                    text: next,
+                    onClick: nextFunction,
+                    buttonColor: Themes.darkerPrimary)
+                : SizedBox(height: 10, width: 110)
+          ],
+        ),
+      );
 }

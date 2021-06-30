@@ -40,6 +40,7 @@ class PhotoCard extends StatelessWidget {
             ),
             image == null
                 ? Container(
+              constraints: BoxConstraints(maxHeight: 500),
               margin: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -60,6 +61,7 @@ class PhotoCard extends StatelessWidget {
                       onTap:
                           deleteFunc ?? () => log("function null on inkwell"),
                       child: Container(
+                        constraints: BoxConstraints(maxHeight: 50),
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),

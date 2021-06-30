@@ -1,9 +1,9 @@
 import 'package:enstrurent/config/themes.dart';
 import 'package:enstrurent/pages/renter/add_product/add_product_controller.dart';
-import 'package:enstrurent/pages/renter/add_product/steps/product_information_view.dart';
-import 'package:enstrurent/pages/renter/add_product/steps/about_sales_view.dart';
-import 'package:enstrurent/pages/renter/add_product/steps/confirm_view.dart';
-import 'package:enstrurent/pages/renter/add_product/steps/upload_photo_view.dart';
+import 'package:enstrurent/pages/renter/add_product/steps_views/product_information_view.dart';
+import 'package:enstrurent/pages/renter/add_product/steps_views/about_sales_view.dart';
+import 'package:enstrurent/pages/renter/add_product/steps_views/confirm_view.dart';
+import 'package:enstrurent/pages/renter/add_product/steps_views/select_photo_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +12,7 @@ import 'package:im_stepper/stepper.dart';
 class AddProductView extends StatelessWidget {
   final AddProductController _controller = Get.find();
   Map<int, Widget> steps = {
-    0: UploadPhotoView(),
+    0: SelectPhotoView(),
     1: ProductInformation(),
     2: AboutSales(),
     3: ConfirmView()
@@ -41,13 +41,15 @@ class AddProductView extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
                 child: Obx(() => Text(
                       _controller.stepperTitle(),
-                      style: Get.textTheme.bodyText1!
-                          .copyWith(color: Get.theme.primaryColor, fontWeight: FontWeight.bold),
+                      style: Get.textTheme.bodyText1!.copyWith(
+                          color: Get.theme.primaryColor,
+                          fontWeight: FontWeight.bold),
                     )),
               ),
             ),
             Obx(
               () => IconStepper(
+                  steppingEnabled:  true,
                   activeStepColor: Get.theme.primaryColor,
                   activeStepBorderColor: Get.theme.accentColor,
                   alignment: Alignment.topCenter,
@@ -68,7 +70,6 @@ class AddProductView extends StatelessWidget {
                   ]),
             ),
             Expanded(child: Obx(() => steps[_controller.currentStep]!))
-
           ],
         ),
       );
