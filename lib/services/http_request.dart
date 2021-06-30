@@ -58,15 +58,15 @@ class HttpRequest extends GetxController {
     }
   }
 
-  Future<int?> sendFormData(String uri, dynamic body) async {
+  Future<dio.Response?> sendFormData(String uri, dynamic body) async {
     await _putTokenToHeaders();
     try {
       var response = await dioObj.post(uri,
           data: body, options: dio.Options(headers: headers));
-      return response.statusCode;
+      return response;
     } on dio.DioError catch (e) {
       log("Dio error: ${e.message}");
-      return 500;
+      return null;
     }
   }
 }

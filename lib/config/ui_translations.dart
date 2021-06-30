@@ -29,6 +29,7 @@ class UITranslations extends Translations {
           "store_info": "İŞLETME BİLGİSİ",
           "phone_number": "TELEFON NUMARASI",
           "empty_value_err": "Lütfen alanı doldurunuz.",
+          "invalid_value_err": "Lütfen geçerli bir değer giriniz!",
           "name":"AD",
           "surname":"SOYAD",
           "confirm": "ONAYLA",
@@ -38,8 +39,10 @@ class UITranslations extends Translations {
           "for_sale":"Satılık",
           "inventory": "ENVANTER",
           "add_product": "ÜRÜN EKLE",
-          "profile": "PROFİL"
-
+          "profile": "PROFİL",
+          "delivery_by_cargo": "Kargoyla Teslim",
+          "take_from_store": "Mağazadan Teslim Al",
+          "select_delivery_types": "Teslimat türlerini seçiniz",
         },
         "en_US": {
           "products_title": "INSTRUMENTS",
@@ -67,6 +70,7 @@ class UITranslations extends Translations {
           "store_info": "STORE INFO",
           "phone_number": "PHONE NUMBER",
           "empty_value_err": "Please fill the field!",
+          "invalid_value_err": "Please enter a valid value!",
           "name":"NAME",
           "surname":"SURNAME",
           "confirm": "CONFIRM",
@@ -76,7 +80,11 @@ class UITranslations extends Translations {
           "for_sale":"For Sale",
           "inventory": "INVENTORY",
           "add_product": "ADD PRODUCT",
-          "profile": "PROFILE"
+          "profile": "PROFILE",
+          "delivery_by_cargo": "Delivery by cargo",
+          "take_from_store": "Take from the store",
+          "select_delivery_types": "Select delivery types"
+
         },
       };
 }
