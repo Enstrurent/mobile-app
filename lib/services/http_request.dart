@@ -17,9 +17,9 @@ class HttpRequest extends GetxController {
 
   HttpRequest() {
     host = "i-return-294414.appspot.com";
-    dioObj.options.baseUrl = "http://$host";
+    dioObj.options.baseUrl = "https://$host";
   }
-  String get hostName => "http://$host";
+  String get hostName => "https://$host";
 
   Future<bool> _putTokenToHeaders() async {
     if (token == "") {
@@ -64,8 +64,8 @@ class HttpRequest extends GetxController {
       var response = await dioObj.post(uri,
           data: body, options: dio.Options(headers: headers));
       return response;
-    } on dio.DioError catch (e) {
-      log("Dio error: ${e.message}");
+    } on dio.DioError catch (e, stackTrace) {
+      log("Dio error: ${e.message}, stack trace: ${stackTrace.toString()}");
       return null;
     }
   }

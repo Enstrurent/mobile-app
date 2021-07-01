@@ -49,7 +49,7 @@ class AddProductView extends StatelessWidget {
             ),
             Obx(
               () => IconStepper(
-                  steppingEnabled:  true,
+                  steppingEnabled:  true, //FIXME false
                   activeStepColor: Get.theme.primaryColor,
                   activeStepBorderColor: Get.theme.accentColor,
                   alignment: Alignment.topCenter,

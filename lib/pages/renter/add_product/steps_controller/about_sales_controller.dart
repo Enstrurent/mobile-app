@@ -14,6 +14,13 @@ class AboutSalesController extends GetxController {
   TextEditingController maxRentalDays = TextEditingController();
   TextEditingController stockCount = TextEditingController();
 
+  resetValues () {
+    isForRent.value = false;
+    isForSale.value = false;
+    isDepositRequired.value = false;
+    isUsed.value = false;
+    salesFormKey.currentState?.reset();
+  }
   get validation =>
       salesFormKey.currentState!.validate() &&
       (isForSale.value || isForRent.value);
@@ -26,7 +33,7 @@ class AboutSalesController extends GetxController {
     "max_rental_days": isForRent.value? int.parse(maxRentalDays.text.trim()) :  0,
     "daily_price": isForRent.value? double.parse(rentalPrice.text.trim()) : 0,
     "full_price":isForSale.value? double.parse(salePrice.text.trim()): 0,
-    "deposit_price": isForRent.value? double.parse(depositPrice.text.trim()) : 0,
+    "deposit_price": isDepositRequired.value? double.parse(depositPrice.text.trim()) : 0,
     "stock_quantity": isForSale.value? int.parse(stockCount.text.trim()) : 0,
   };
 }

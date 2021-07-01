@@ -8,10 +8,13 @@ class ProductInformationController extends GetxController {
   TextEditingController info = TextEditingController();
   final infoFormKey = GlobalKey<FormState>();
 
+  void resetValues() => infoFormKey.currentState?.reset();
+
   Map<String, String> dataToMap() => {
         "category": category.text.trim(),
         "brand": brand.text.trim(),
         "model": model.text.trim(),
         "info": info.text.trim()
       };
+
 }
