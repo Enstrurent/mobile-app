@@ -7,8 +7,19 @@ class ProductInformationController extends GetxController {
   TextEditingController model = TextEditingController();
   TextEditingController info = TextEditingController();
   final infoFormKey = GlobalKey<FormState>();
+  RxBool isHandmade = false.obs;
 
-  void resetValues() => infoFormKey.currentState?.reset();
+  void resetValues() {
+    isHandmade.value = false;
+    infoFormKey.currentState?.reset();
+  }
+
+  set isHandMade(bool value) {
+    if(value) {
+      brand.text = "El yapımı";
+      model.text = category.text;
+    }
+  }
 
   Map<String, String> dataToMap() => {
         "category": category.text.trim(),
