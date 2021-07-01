@@ -144,7 +144,7 @@ class AboutSales extends StatelessWidget {
                       if(_salesController.validation) {
                         _productController.setProductInformation = _salesController.dataToMap();
                         _productController.onStepContinue();
-                      }
+                      } else widgets.getSnackBar("error".tr, "Geçersiz işlem");
                     }),
               )
             ],
