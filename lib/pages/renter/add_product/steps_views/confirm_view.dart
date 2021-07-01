@@ -6,6 +6,7 @@ import 'package:enstrurent/pages/renter/add_product/steps_controller/confirm_con
 import 'package:enstrurent/widgets/index.dart' as widgets;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class ConfirmView extends StatelessWidget {
@@ -49,16 +50,24 @@ class ConfirmView extends StatelessWidget {
             )
           ]),
 
-          Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: _productController.nextBackButtons(
-                backFunction: () => _productController.onStepCancel(),
-                nextFunction: () {
-                  var data = _confirmController.confirmAndGiveData();
-                  if (data != null) _productController.setProductInformation = data;
-                },
-                next: "confirm".tr,
-                nextIcon: Icon(CupertinoIcons.checkmark_circle)
+          Obx(() => Visibility(
+              visible: !_productController.onConfirm.value,
+              replacement: SpinKitCircle(color: Get.theme.primaryColor, size: 24),
+              child: Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: _productController.nextBackButtons(
+                    backFunction: () => _productController.onStepCancel(),
+                    nextFunction: () {
+                      var data = _confirmController.confirmAndGiveData();
+                      if (data != null) {
+                        _productController.setProductInformation = data;
+                        _productController.addProductRequest();
+                      }
+                    },
+                    next: "confirm".tr,
+                    nextIcon: Icon(CupertinoIcons.checkmark_circle)
+                ),
+              ),
             ),
           ),
         ],

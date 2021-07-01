@@ -21,6 +21,15 @@ class SelectPhotoController extends GetxController {
     photoCards.add(emptyPhotoCard!);
   }
 
+  void resetValues() {
+    photoCards.clear();
+    singleFile = null;
+    photos.clear();
+    aspectRatio.value = 4 / 3;
+    photoCards.add(emptyPhotoCard!);
+  }
+
+
   emptyCardFunction() async {
     singleFile = await PhotoService.getSelectionDialog();
     if (singleFile is File) {
@@ -51,5 +60,6 @@ class SelectPhotoController extends GetxController {
       update();
     };
   }
+
 
 }

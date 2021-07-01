@@ -26,6 +26,12 @@ class ConfirmController extends GetxController {
 
   var isDraft = false.obs;
 
+  void resetValues() {
+    selectedTags.value = [];
+    selectedPaymentMethods.value = [];
+    selectedDeliveryTypes.value = [];
+  }
+
   Map<String, dynamic>? confirmAndGiveData() {
     if (selectedDeliveryTypes.isEmpty) {
       getSnackBar("error".tr, "Teslimat türü seçmediniz");
@@ -40,5 +46,6 @@ class ConfirmController extends GetxController {
       "is_published": !isDraft.value
     };
   }
+
 
 }
