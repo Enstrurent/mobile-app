@@ -26,7 +26,7 @@ class BuildProductCard extends StatelessWidget {
           ImageCard(
             imageURL: product.thumbnail_names != null
                 ? "https://${HttpRequest.host}/images/${product.thumbnail_names![0]}"
-                : "https://via.placeholder.com/600x800",
+                : "https://via.placeholder.com/600x800.png?text=ENSTRURENT",
             isForRent: product.is_rental,
             isForSale: product.is_open_to_sell,
             rentalPrice: product.daily_price,

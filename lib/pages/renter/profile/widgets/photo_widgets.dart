@@ -18,10 +18,13 @@ Widget _headerPhoto() => Stack(
           padding: EdgeInsets.only(bottom: 40),
           height: 200,
           width: 400,
-          child: CachedNetworkImage(
-            imageUrl: "https://source.unsplash.com/random/9",
-            fit: BoxFit.fill,
-            placeholder: (context, url) => LinearProgressIndicator(),
+          child: Obx(() => CachedNetworkImage(
+              imageUrl: _controller.renter!.header_pic_name!.isNotEmpty
+                  ? _controller.headerPhotoURL.value
+                  : "https://via.placeholder.com/728x300.png?text=header+picture",
+              fit: BoxFit.fill,
+              placeholder: (context, url) => LinearProgressIndicator(),
+            ),
           ),
         ),
         Wrap(children: [
@@ -29,7 +32,9 @@ Widget _headerPhoto() => Stack(
             transform: Matrix4.translationValues(0.0, -7, 0.0),
             child: MaterialButton(
                 elevation: 0,
-                onPressed: () => log("message"),
+                onPressed: () async {
+                  await _controller.changePhoto(ProfilePhoto.headers);
+                },
                 colorBrightness: Brightness.light,
                 color: Get.theme.primaryColor.withOpacity(0.8),
                 child: Text(
@@ -45,17 +50,25 @@ Widget _headerPhoto() => Stack(
 Widget _avatar() => Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundImage: CachedNetworkImageProvider(
-              "https://source.unsplash.com/random/2"),
+        Obx(
+          () => CircleAvatar(
+            radius: 50,
+            backgroundImage: CachedNetworkImageProvider(
+                _controller.renter!.profile_pic_name!.isNotEmpty
+                    ? _controller.profilePhotoURL.value
+                    : "https://via.placeholder.com/200x200.png?text=PP"),
+          ),
         ),
         Positioned(
             width: 30,
             right: 70,
             top: 60,
-            child:
-                CircleButton(iconData: CupertinoIcons.repeat, onPressed: null)),
+            child: CircleButton(
+              iconData: CupertinoIcons.repeat,
+              onPressed: () async {
+                await _controller.changePhoto(ProfilePhoto.profile);
+              },
+            )),
       ],
     );
 
@@ -68,7 +81,7 @@ Widget _ratingBox() => Container(
       child: Row(
         children: [
           Text(
-            "5 ",
+            "${_controller.renter!.rating.toString()} ",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           Icon(

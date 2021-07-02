@@ -1,5 +1,5 @@
-import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:enstrurent/pages/renter/inventory/inventory_controller.dart';
 import 'package:enstrurent/pages/renter/profile/profile_controller.dart';
 import 'package:enstrurent/pages/renter/profile/widgets/address_sheet.dart';
 import 'package:enstrurent/services/auth.dart';
@@ -12,8 +12,10 @@ import 'package:get/get.dart';
 
 part "widgets/photo_widgets.dart";
 
+final ProfileController _controller = Get.put(ProfileController());
+
 class ProfileView extends StatelessWidget {
-  final ProfileController _controller = Get.put(ProfileController());
+  InventoryController _inventoryController = Get.find();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -43,7 +45,9 @@ class ProfileView extends StatelessWidget {
                       text: _controller.renter!.store_name),
                   ProfileRow(
                       headline: "SLOGAN", text: _controller.renter!.store_info),
-                  ProfileRow(headline: "ÜRÜN SAYISI", text: "2"), // FIXME
+                  Obx(() => ProfileRow(
+                      headline: "ÜRÜN SAYISI",
+                      text: _inventoryController.products.length.toString())),
                   SizedBox(height: 30),
                   Button(
                       text: "ADRESİ GÖRÜNTÜLE",
@@ -56,8 +60,6 @@ class ProfileView extends StatelessWidget {
               ),
       );
 
-
-  Future<dynamic> addressSheet() => Get.bottomSheet(
-      AddressSheet(),
-      enableDrag: true);
+  Future<dynamic> addressSheet() =>
+      Get.bottomSheet(AddressSheet(), enableDrag: true);
 }
