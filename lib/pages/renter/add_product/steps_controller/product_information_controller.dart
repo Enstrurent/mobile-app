@@ -12,6 +12,10 @@ class ProductInformationController extends GetxController {
   void resetValues() {
     isHandmade.value = false;
     infoFormKey.currentState?.reset();
+    category.text = "";
+    brand.text = "";
+    model.text = "";
+    info.text = "";
   }
 
   set isHandMade(bool value) {

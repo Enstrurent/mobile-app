@@ -59,8 +59,7 @@ class ProductsView extends StatelessWidget {
                     itemCount: _controller.products.length,
                     staggeredTileBuilder: (index) => StaggeredTile.fit(2),
                     itemBuilder: (context, index) => BuildProductCard(
-                        product: (_controller.products[index] as Product),
-                        imageURL: "https://source.unsplash.com/random/$index"),
+                        product: (_controller.products[index] as Product)),
                   ),
           ),
         ));
