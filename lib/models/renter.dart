@@ -15,8 +15,8 @@ class Renter {
   final String store_name;
   final String phone_number;
   final double? rating;
-  final String? profile_pic_name;
-  final String? header_pic_name;
+  String? profile_pic_name;
+  String? header_pic_name;
   final String? address_id;
 
   Renter(
