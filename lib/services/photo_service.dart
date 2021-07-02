@@ -22,7 +22,7 @@ class PhotoService {
           await FlutterNativeImage.getImageProperties(entry.value.path);
       File compressedFile = await FlutterNativeImage.compressImage(
           entry.value.path,
-          quality: fileSizeMB < 2 ? 90 : 50,
+          quality: fileSizeMB <= 2 ? 100 : 70,
           targetWidth:
               properties.width! > 1920 ? (properties.width! / 2).round() : 0,
           targetHeight:

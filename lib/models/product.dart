@@ -24,6 +24,7 @@ class Product {
   final int stock_quantity;
   final List<String> delivery_types;
   final List<String> image_names;
+  final List<String>? thumbnail_names;
   final List<String> tags;
   final List<String>? payment_methods;
   final bool? is_published;
@@ -34,7 +35,7 @@ class Product {
       this.info, this.is_rental, this.is_deposit_required, this.is_open_to_sell,
       this.is_used, this.max_rental_days, this.daily_price, this.full_price,
       this.deposit_price, this.stock_quantity, this.delivery_types,
-      this.image_names, this.tags, this.payment_methods, this.is_published, this.rented_days_range);
+      this.image_names, this.tags, this.payment_methods, this.is_published, this.rented_days_range, this.thumbnail_names);
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 

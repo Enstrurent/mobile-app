@@ -38,7 +38,6 @@ class InventoryView extends StatelessWidget {
                     staggeredTileBuilder: (index) => StaggeredTile.fit(1),
                     itemBuilder: (context, index) => BuildProductCard(
                       product: _controller.products[index],
-                      imageURL: "https://source.unsplash.com/random/${index}1",
                       pageName: "/editable_product",
                     ),
                   ),

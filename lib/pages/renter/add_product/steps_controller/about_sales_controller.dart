@@ -20,6 +20,11 @@ class AboutSalesController extends GetxController {
     isDepositRequired.value = false;
     isUsed.value = false;
     salesFormKey.currentState?.reset();
+    rentalPrice.text = "";
+    salePrice.text = "";
+    depositPrice.text = "";
+    maxRentalDays.text = "";
+    stockCount.text = "";
   }
   get validation =>
       salesFormKey.currentState!.validate() &&

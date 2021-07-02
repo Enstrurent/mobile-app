@@ -8,7 +8,7 @@ enum Request { POST, GET, DELETE, PUT }
 
 class HttpRequest extends GetxController {
   SecureStore _store = SecureStore();
-  String host = "";
+  static String host = "i-return-294414.appspot.com";
   var dioObj = dio.Dio(); //  For sending multipart files with form-data.
   String token = "";
   Map<String, String> headers = {
@@ -16,7 +16,6 @@ class HttpRequest extends GetxController {
   }; // TODO: add app key to headers
 
   HttpRequest() {
-    host = "i-return-294414.appspot.com";
     dioObj.options.baseUrl = "https://$host";
   }
   String get hostName => "https://$host";
