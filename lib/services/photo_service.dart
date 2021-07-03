@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:enstrurent/services/http_request.dart';
@@ -45,7 +44,7 @@ class PhotoService {
         quality: 70,
         targetWidth: isThumbnail ? 300 : 0,
         targetHeight: isThumbnail
-            ? (properties.height! * 600 / properties.width!).round()
+            ? (properties.height! * 300 / properties.width!).round()
             : 0);
     dioPhotos.add(await dio.MultipartFile.fromFile(file.path,
         filename: "thumbnail.jpg", contentType: MediaType("image", "jpg")));
