@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:enstrurent/pages/renter/add_product/add_product_view.dart';
 
 class RenterHomeController extends GetxController {
-  List<String> menuNames = ["inventory".tr, "add_product".tr, "profile".tr];
+  List<String> menuNames = ["inventory".tr, "add_product".tr, "orders".tr, "profile".tr];
   late List<BottomNavigationBarItem> renterNavItems;
 
   @override
@@ -15,7 +14,8 @@ class RenterHomeController extends GetxController {
       BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.cube_box), label: menuNames[0]),
       BottomNavigationBarItem(icon: Icon(CupertinoIcons.add_circled), label: menuNames[1]),
-      BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: menuNames[2])
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.doc_on_doc), label: menuNames[2]),
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: menuNames[3]),
     ];
   }
 
@@ -28,6 +28,7 @@ class RenterHomeController extends GetxController {
           currentIndex: getSelectedIndex,
           items: navbarItems,
           onTap: onItemTapped,
+          type: BottomNavigationBarType.fixed,
           backgroundColor: Get.theme.bottomNavigationBarTheme.backgroundColor,
           unselectedItemColor: Get.theme.accentColor,
           selectedItemColor: Get.theme.primaryColor,

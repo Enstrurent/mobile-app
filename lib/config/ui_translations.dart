@@ -43,6 +43,7 @@ class UITranslations extends Translations {
           "delivery_by_cargo": "Kargoyla Teslim",
           "take_from_store": "Mağazadan Teslim Al",
           "select_delivery_types": "Teslimat türlerini seçiniz",
+          "orders":"SİPARİŞLER",
         },
         "en_US": {
           "products_title": "INSTRUMENTS",
@@ -83,8 +84,8 @@ class UITranslations extends Translations {
           "profile": "PROFILE",
           "delivery_by_cargo": "Delivery by cargo",
           "take_from_store": "Take from the store",
-          "select_delivery_types": "Select delivery types"
-
+          "select_delivery_types": "Select delivery types",
+          "orders":"ORDERS"
         },
       };
 }

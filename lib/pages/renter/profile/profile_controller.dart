@@ -19,9 +19,9 @@ class ProfileController extends GetxController {
   RxString headerPhotoURL = "".obs;
 
   @override
-  onInit() {
+  onInit() async {
     super.onInit();
-    getProfileData();
+    await getProfileData();
     if (renter!.profile_pic_name != null)
       setProfilePhoto = renter!.profile_pic_name!;
 
