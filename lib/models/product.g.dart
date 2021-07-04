@@ -38,9 +38,9 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
         ? (json['payment_methods'] as List).map((e) => e as String).toList()
         : [],
     json['is_published'],
-    json['rented_days_range'] == null
+    json['rented_days_ranges'] == null
         ? null
-        : (json['rented_days_range'] as List)
+        : (json['rented_days_ranges'] as List)
         .map((e) => (e as List).map((e) => e as DateTime).toList())
         .toList(),
     json['thumbnail_names'] != null
@@ -54,29 +54,29 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ProductToJson(Product instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'CreatedAt': instance.CreatedAt.toIso8601String(),
-      'UpdatedAt': instance.UpdatedAt.toIso8601String(),
-      'DeletedAt': instance.DeletedAt.toIso8601String(),
-      'renter_id': instance.renter_id,
+      'CreatedAt': instance.createdAt.toIso8601String(),
+      'UpdatedAt': instance.updatedAt.toIso8601String(),
+      'DeletedAt': instance.deletedAt.toIso8601String(),
+      'renter_id': instance.renterId,
       'city': instance.city,
       'category': instance.category,
       'brand': instance.brand,
       'model': instance.model,
       'info': instance.info,
-      'is_rental': instance.is_rental,
-      'is_deposit_required': instance.is_deposit_required,
-      'is_open_to_sell': instance.is_open_to_sell,
-      'is_used': instance.is_used,
-      'max_rental_days': instance.max_rental_days,
-      'daily_price': instance.daily_price,
-      'full_price': instance.full_price,
-      'deposit_price': instance.deposit_price,
-      'stock_quantity': instance.stock_quantity,
-      'delivery_types': instance.delivery_types,
-      'image_names': instance.image_names,
-      'thumbnail_names': instance.thumbnail_names,
+      'is_rental': instance.isRental,
+      'is_deposit_required': instance.isDepositRequired,
+      'is_open_to_sell': instance.isOpenToSell,
+      'is_used': instance.isUsed,
+      'max_rental_days': instance.maxRentalDays,
+      'daily_price': instance.dailyPrice,
+      'full_price': instance.fullPrice,
+      'deposit_price': instance.depositPrice,
+      'stock_quantity': instance.stockQuantity,
+      'delivery_types': instance.deliveryTypes,
+      'image_names': instance.imageNames,
+      'thumbnail_names': instance.thumbnailNames,
       'tags': instance.tags,
-      'payment_methods': instance.payment_methods,
-      'is_published': instance.is_published,
-      'rented_days_range': instance.rented_days_range
+      'payment_methods': instance.paymentMethods,
+      'is_published': instance.isPublished,
+      'rented_days_ranges': instance.rentedDaysRanges
     };

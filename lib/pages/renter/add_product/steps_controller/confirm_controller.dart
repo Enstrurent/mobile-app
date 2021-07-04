@@ -1,4 +1,4 @@
-import 'package:enstrurent/widgets/get_snack.dart';
+import 'package:enstrurent/widgets/getx_widgets.dart';
 import 'package:get/get.dart';
 
 class ConfirmController extends GetxController {

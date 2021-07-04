@@ -11,7 +11,7 @@ class ProfileRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
