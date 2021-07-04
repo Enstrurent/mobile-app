@@ -7,7 +7,7 @@ import 'package:enstrurent/widgets/index.dart' as widgets;
 import 'package:get/get.dart';
 
 class ClientHome extends StatelessWidget {
-  SecureStore _store = SecureStore();
+  SecureStore _store = Get.find();
 
   getValues() async {
     var token = await _store.readValue("token");

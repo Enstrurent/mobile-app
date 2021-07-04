@@ -24,13 +24,13 @@ class BuildProductCard extends StatelessWidget {
       child: Column(
         children: [
           ImageCard(
-            imageURL: product.thumbnail_names != null
-                ? "https://${HttpRequest.host}/images/${product.thumbnail_names![0]}"
+            imageURL: product.thumbnailNames != null
+                ? "https://${HttpRequest.host}/images/${product.thumbnailNames![0]}"
                 : "https://via.placeholder.com/600x800.png?text=ENSTRURENT",
-            isForRent: product.is_rental,
-            isForSale: product.is_open_to_sell,
-            rentalPrice: product.daily_price,
-            salePrice: product.full_price,
+            isForRent: product.isRental,
+            isForSale: product.isOpenToSell,
+            rentalPrice: product.dailyPrice,
+            salePrice: product.fullPrice,
           ),
           BottomInfoCard(title: product.generateTitle())
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
 
-class SecureStore {
+class SecureStore extends GetxController {
   FlutterSecureStorage storage = new FlutterSecureStorage();
 
   Future<dynamic> readValue(String key) async {

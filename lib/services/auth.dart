@@ -15,7 +15,8 @@ Map<Roles, String> roleString = {
 
 class Auth {
   Future<Roles> validateCurrentUser() async {
-    var secure = SecureStore();
+    SecureStore secure = Get.find();
+
     if (await validateToken()) {
       Roles selectedRole = Roles.GUEST;
       var role = await secure.readValue("role");
@@ -27,7 +28,7 @@ class Auth {
       return Roles.GUEST;
   }
 
-  Future<bool> validateToken() async {
+  static Future<bool> validateToken() async {
     HttpRequest reqSender = Get.find();
     var response = await reqSender.send("auth/validate", Request.POST);
     if (response.statusCode == 200)
@@ -36,8 +37,17 @@ class Auth {
       return false;
   }
 
+  static Future<bool> validateClient() async {
+    SecureStore secure = Get.find();
+    if (await secure.readValue("token") is String &&
+        await secure.readValue("role") == roleString[Roles.CLIENT])
+      return true;
+    else
+      return false;
+  }
+
   static navigateTo() async {
-    var secure = SecureStore();
+    SecureStore secure = Get.find();
     dynamic role = await secure.readValue("role");
 
     role != null
@@ -46,7 +56,7 @@ class Auth {
   }
 
   static bool saveAuthToLocal(Map resBody) {
-    SecureStore store = SecureStore();
+    SecureStore store = Get.find();
     try {
       resBody.forEach((key, value) async {
         await store.writeValue(key, value);
@@ -59,7 +69,7 @@ class Auth {
   }
 
   static signOut() {
-    SecureStore _store = SecureStore();
+    SecureStore _store = Get.find();
     _store.resetAll();
     Get.offAllNamed("/");
   }

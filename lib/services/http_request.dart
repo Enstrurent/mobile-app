@@ -7,7 +7,7 @@ import 'package:enstrurent/services/secure_store.dart';
 enum Request { POST, GET, DELETE, PUT }
 
 class HttpRequest extends GetxController {
-  SecureStore _store = SecureStore();
+  SecureStore _store = Get.find();
   static String host = "i-return-294414.appspot.com";
   var dioObj = dio.Dio(); //  For sending multipart files with form-data.
   String token = "";
@@ -19,6 +19,8 @@ class HttpRequest extends GetxController {
     dioObj.options.baseUrl = "https://$host";
   }
   String get hostName => "https://$host";
+
+  static String get imageBaseUrl => "https://$host/images/";
 
   Future<bool> _putTokenToHeaders() async {
     if (token == "") {

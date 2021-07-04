@@ -3,13 +3,12 @@ import 'package:get/get.dart';
 
 class Button extends StatelessWidget {
   final String text;
-  final VoidCallback onClick;
-  final Color buttonColor;
+  final VoidCallback? onClick;
+  final Color  buttonColor;
   final Icon? icon;
 
   Button(
-      {required this.text,
-      required this.onClick,
+      {required this.text, this.onClick,
       required this.buttonColor,
       Key? key,
       this.icon})
@@ -18,7 +17,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () => onClick(),
+        onPressed: onClick,
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(buttonColor),
             elevation: MaterialStateProperty.all(5),

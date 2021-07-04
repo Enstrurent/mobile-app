@@ -4,38 +4,38 @@ part 'product.g.dart';
 @JsonSerializable()
 class Product {
   final String id;
-  final DateTime CreatedAt;
-  final DateTime UpdatedAt;
-  final DateTime DeletedAt;
-  final String renter_id;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final DateTime deletedAt;
+  final String renterId;
   final String city;
   final String category;
   final String brand;
   final String model;
   final String info;
-  final bool is_rental;
-  final bool is_deposit_required;
-  final bool is_open_to_sell;
-  final bool is_used;
-  final int max_rental_days;
-  final double daily_price;
-  final double full_price;
-  final int deposit_price;
-  final int stock_quantity;
-  final List<String> delivery_types;
-  final List<String> image_names;
-  final List<String>? thumbnail_names;
+  final bool isRental;
+  final bool isDepositRequired;
+  final bool isOpenToSell;
+  final bool isUsed;
+  final int maxRentalDays;
+  final double dailyPrice;
+  final double fullPrice;
+  final int depositPrice;
+  final int stockQuantity;
+  final List<String> deliveryTypes;
+  final List<String> imageNames;
+  final List<String>? thumbnailNames;
   final List<String> tags;
-  final List<String>? payment_methods;
-  final bool? is_published;
-  final List<List<DateTime>?>? rented_days_range;
+  final List<String>? paymentMethods;
+  final bool? isPublished;
+  final List<List<DateTime>?>? rentedDaysRanges;
 
-  Product(this.id, this.CreatedAt, this.UpdatedAt, this.DeletedAt,
-      this.renter_id, this.city, this.category, this.brand, this.model,
-      this.info, this.is_rental, this.is_deposit_required, this.is_open_to_sell,
-      this.is_used, this.max_rental_days, this.daily_price, this.full_price,
-      this.deposit_price, this.stock_quantity, this.delivery_types,
-      this.image_names, this.tags, this.payment_methods, this.is_published, this.rented_days_range, this.thumbnail_names);
+  Product(this.id, this.createdAt, this.updatedAt, this.deletedAt,
+      this.renterId, this.city, this.category, this.brand, this.model,
+      this.info, this.isRental, this.isDepositRequired, this.isOpenToSell,
+      this.isUsed, this.maxRentalDays, this.dailyPrice, this.fullPrice,
+      this.depositPrice, this.stockQuantity, this.deliveryTypes,
+      this.imageNames, this.tags, this.paymentMethods, this.isPublished, this.rentedDaysRanges, this.thumbnailNames);
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 

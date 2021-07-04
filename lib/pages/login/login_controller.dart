@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:enstrurent/services/auth.dart';
 import 'package:enstrurent/services/http_request.dart';
-import 'package:enstrurent/services/secure_store.dart';
-import 'package:enstrurent/widgets/get_snack.dart';
+import 'package:enstrurent/widgets/getx_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/status/http_status.dart';

@@ -1,8 +1,7 @@
-import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:enstrurent/pages/renter/add_product/steps_controller/select_photo_controller.dart';
-import 'package:enstrurent/widgets/button.dart';
+import 'package:enstrurent/widgets/getx_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,7 +37,15 @@ class SelectPhotoView extends StatelessWidget {
                   child:
                       _addProductController.nextBackButtons(nextFunction: () {
                     if (_photoController.photos.length == 0)
-                      Get.dialog(_dialogContent());
+                      Get.dialog(dialogContent(
+                          headline: "Uyarı: Fotoğraf yüklemediniz.",
+                          backText: "GERİ DÖN",
+                          nextText: "DEVAM ET",
+                          backOnClick: () => Get.back(),
+                          nextOnClick: () {
+                            _addProductController.onStepContinue();
+                            Get.back();
+                          }));
                     else {
                       _addProductController.photos = _photoController.photos;
                       _addProductController.onStepContinue();
@@ -48,31 +55,4 @@ class SelectPhotoView extends StatelessWidget {
           ),
         ),
       );
-
-  Widget _dialogContent() => Card(
-      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 320),
-      color: Get.theme.backgroundColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Uyarı: Fotoğraf yüklemediniz.", style: Get.textTheme.bodyText1),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Button(
-                  text: "GERİ DÖN",
-                  onClick: () => Get.back(),
-                  buttonColor: Get.theme.accentColor),
-              Button(
-                  text: "DEVAM ET",
-                  onClick: () {
-                    _addProductController.onStepContinue();
-                    Get.back();
-                  },
-                  buttonColor: Get.theme.primaryColor)
-            ],
-          )
-        ],
-      ));
 }
