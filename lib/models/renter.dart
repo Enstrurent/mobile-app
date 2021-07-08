@@ -1,8 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
 
 part 'renter.g.dart';
 
-@JsonSerializable()
 class Renter {
   final String? id;
   final DateTime? CreatedAt;

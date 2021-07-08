@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:enstrurent/services/product_service.dart';
+import 'package:enstrurent/widgets/getx_widgets.dart';
 import 'package:get/get.dart';
 
 class InventoryController extends GetxController {
@@ -23,5 +24,25 @@ class InventoryController extends GetxController {
     } finally {
       onWait.value = false;
     }
+  }
+
+  Future<void> longPressDelete(String productID) async {
+    Get.dialog(
+        dialogContent(
+            headline: "Ürünü silmek istiyor musunuz?",
+            backText: "HAYIR",
+            nextText: "EVET",
+            nextOnClick: () async {
+              bool success = await ProductService.deleteProduct(productID);
+              if (success) Get.back();
+              Get.defaultDialog(
+                  backgroundColor: Get.theme.backgroundColor,
+                  middleText: "Ürün kaldırıldı.",
+                  title: "Başarılı!",
+                  titleStyle: Get.textTheme.headline4);
+              await getRenterProducts();
+            },
+            backOnClick: () => Get.back()),
+        barrierColor: Get.theme.backgroundColor.withOpacity(0.9));
   }
 }

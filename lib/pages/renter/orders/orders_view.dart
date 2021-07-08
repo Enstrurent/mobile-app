@@ -1,12 +1,17 @@
 import 'dart:developer';
 
 import 'package:enstrurent/config/themes.dart';
+import 'package:enstrurent/models/order_base.dart';
+import 'package:enstrurent/models/purchase_order.dart';
+import 'package:enstrurent/pages/renter/orders/orders_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class OrdersView extends StatelessWidget {
+  final OrdersController _controller = Get.put(OrdersController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,32 +21,51 @@ class OrdersView extends StatelessWidget {
         centerTitle: true,
       ),
       body: RefreshIndicator(
-        onRefresh: () async {},
-        child: ListView.builder(
-            itemCount: 3, itemBuilder: (context, index) => listItem(index)),
+        onRefresh: _controller.getOrders,
+        child: Obx(
+          () => _controller.orders.isNotEmpty
+              ? ListView.builder(
+                  itemCount: _controller.orders.length,
+                  itemBuilder: (context, index) =>
+                      listItem(_controller.orders[index]))
+              : Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text("Siparişiniz bulunmamaktadır."),
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: IconButton(
+                            icon: Icon(Icons.replay_sharp),
+                            onPressed: _controller.getOrders),
+                      )
+                    ],
+                  ),
+                ),
+        ),
       ),
     );
   }
 
-  Widget listItem(int a) => Container(
+  Widget listItem(OrderBase order) => Container(
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
         padding: EdgeInsets.all(10),
-
         child: Slidable(
           actionPane: SlidableScrollActionPane(),
           child: ListTile(
-            onTap: () => log("Td"),
+            onTap: () => log("list tile onTap"),
             tileColor: Themes.darkerBackground,
-            subtitle: Text("Sipariş tarihi: 20 Nisan 2021 22.30"),
-            title: Text("Durum: Sipariş Verildi"),
-            leading: a % 2 == 0 ? Icon(Icons.shopping_bag) : null,
+            subtitle: Text("Sipariş tarihi: ${order.CreatedAt}"),
+            title: Text("Durum: ${order.order_status}"),
+            leading: order is PurchaseOrder ? Icon(Icons.shopping_bag) : null,
           ),
           secondaryActions: [
             IconSlideAction(
               caption: 'Ürünü önizle',
               color: Get.theme.primaryColor,
               icon: CupertinoIcons.search,
-              onTap: null,
+              onTap: () async => await _controller.productPreview(order.product_id!),
             ),
           ],
           actions: [
@@ -51,9 +75,7 @@ class OrdersView extends StatelessWidget {
               icon: CupertinoIcons.delete,
               onTap: null,
             ),
-
           ],
         ),
       );
-
 }

@@ -7,11 +7,13 @@ import 'package:get/get.dart';
 class BuildProductCard extends StatelessWidget {
   final Product product;
   final String pageName;
+  final VoidCallback? onLongPress;
 
   const BuildProductCard(
       {Key? key,
       required this.product,
-      this.pageName = "/single_product"})
+      this.pageName = "/single_product",
+      this.onLongPress})
       : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class BuildProductCard extends StatelessWidget {
       // TODO: Add longPress popup button
       splashColor: Get.theme.primaryColor,
       padding: EdgeInsets.all(1),
+      onLongPress: onLongPress,
       onPressed: () => Get.toNamed(pageName, arguments: {"product": product}),
       child: Column(
         children: [
