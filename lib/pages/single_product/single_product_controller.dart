@@ -37,16 +37,24 @@ class SingleProductController extends GetxController {
   rentProductClick() async {
     if (await Auth.validateClient()) {
     } else {
-      await Get.dialog(notClientDialog());
+      await notClientDialog();
     }
   }
 
-  purchaseProductClick() async {}
+  purchaseProductClick() async {
+    if (await Auth.validateClient()) {
+    } else {
+      await notClientDialog();
+    }
+  }
 
-  Widget notClientDialog() => dialogContent(
+  Future<dynamic> notClientDialog() => Get.dialog(dialogContent(
       headline: "Müşteri olarak giriş yapınız",
       backText: "KAPAT",
       nextText: "GİRİŞ YAP",
       backOnClick: () => Get.back(),
-      nextOnClick: () => Get.toNamed("/login"));
+      nextOnClick: () {
+        Auth.signOut(); // FIXME
+        Get.toNamed("/login");
+      }), barrierColor: Get.theme.backgroundColor.withOpacity(0.9));
 }

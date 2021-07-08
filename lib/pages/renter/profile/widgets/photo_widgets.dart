@@ -38,8 +38,8 @@ Widget _headerPhoto() => Stack(
                 colorBrightness: Brightness.light,
                 color: Get.theme.primaryColor.withOpacity(0.8),
                 child: Text(
-                  "DEĞİŞTİR",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  "change".tr,
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                 )),
           ),
         ]),

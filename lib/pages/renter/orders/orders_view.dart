@@ -10,7 +10,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class OrdersView extends StatelessWidget {
-  final OrdersController _controller = Get.put(OrdersController());
+  final OrdersController _controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -56,16 +56,19 @@ class OrdersView extends StatelessWidget {
           child: ListTile(
             onTap: () => log("list tile onTap"),
             tileColor: Themes.darkerBackground,
-            subtitle: Text("Sipariş tarihi: ${order.CreatedAt}"),
             title: Text("Durum: ${order.order_status}"),
-            leading: order is PurchaseOrder ? Icon(Icons.shopping_bag) : null,
+            subtitle: Text(
+                "Sipariş tarihi: ${order.CreatedAt}\n${_controller.getPriceText(order)}",
+                maxLines: 2),
+            leading: order is PurchaseOrder ? Icon(CupertinoIcons.cart_fill) : Icon(CupertinoIcons.cart),
           ),
           secondaryActions: [
             IconSlideAction(
               caption: 'Ürünü önizle',
               color: Get.theme.primaryColor,
               icon: CupertinoIcons.search,
-              onTap: () async => await _controller.productPreview(order.product_id!),
+              onTap: () async =>
+                  await _controller.productPreview(order.product_id!),
             ),
           ],
           actions: [

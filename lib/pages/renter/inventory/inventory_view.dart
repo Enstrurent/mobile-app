@@ -31,19 +31,34 @@ class InventoryView extends StatelessWidget {
                     color: Get.theme.primaryColor,
                     size: 60,
                   ))
-                : (_controller.products.isNotEmpty ? StaggeredGridView.countBuilder(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 12,
-                    itemCount: _controller.products.length,
-                    staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-                    itemBuilder: (context, index) => BuildProductCard(
-                      product: _controller.products[index],
-                      pageName: "/editable_product",
-                      onLongPress: () async => _controller.longPressDelete(
-                          (_controller.products[index] as Product).id),
-                    ),
-                  ): Center(child: Text("Envanter boş"),)),
+                : (_controller.products.isNotEmpty
+                    ? StaggeredGridView.countBuilder(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 12,
+                        itemCount: _controller.products.length,
+                        staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+                        itemBuilder: (context, index) => BuildProductCard(
+                          product: _controller.products[index],
+                          onLongPress: () async => _controller.longPressDelete(
+                              (_controller.products[index] as Product).id),
+                        ),
+                      )
+                    : Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text("Envanterinizde ürün bulunmamaktadır."),
+                            Padding(
+                              padding: EdgeInsets.all(16),
+                              child: IconButton(
+                                  icon: Icon(Icons.replay_sharp),
+                                  onPressed: _controller.getRenterProducts),
+                            )
+                          ],
+                        ),
+                      )),
           ),
         ),
       );
