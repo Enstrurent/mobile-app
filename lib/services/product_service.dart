@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:enstrurent/models/product.dart';
+import 'package:enstrurent/services/auth.dart';
 import 'package:enstrurent/services/http_request.dart';
+import 'package:enstrurent/widgets/getx_widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/status/http_status.dart';
 
@@ -36,7 +38,30 @@ class ProductService {
     }
   }
 
-  static Future deleteProduct() async {}
+  static Future<Product?> getOneProduct(String productID) async {
+    HttpRequest request = Get.find();
+    var response = await request.send("/products/$productID", Request.GET);
+    if (response.statusCode == HttpStatus.ok) {
+      Map<String, dynamic> parsedJson = jsonDecode(response.body);
+      return Product.fromJson(parsedJson);
+    } else {
+      log("status ${response.statusCode}  body ${response.body}", name: "Error on getOneProduct");
+      return null;
+    }
+  }
+
+  static Future<bool> deleteProduct(String productID) async {
+    HttpRequest request = Get.find();
+    var response = await request.send("/products/$productID", Request.DELETE);
+    if (response.statusCode == HttpStatus.ok) {
+      return true;
+    } else if (response.statusCode == HttpStatus.unauthorized) {
+      Auth.signOut();
+      getSnackBar("error".tr, "unauth_err");
+      return false;
+    } else return false;
+
+  }
 
   static Future updateProduct() async {}
 

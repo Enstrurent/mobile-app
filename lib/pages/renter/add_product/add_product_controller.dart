@@ -110,7 +110,6 @@ class AddProductController extends GetxController {
       }
     }
 
-    log(_productInformation.toString());
     bool success = await productService.addProduct(_productInformation);
     if (success) {
       widgets.getSnackBar("Başarılı!", "Ürün başarılı bir şekilde listelendi");

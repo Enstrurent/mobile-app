@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:json_annotation/json_annotation.dart';
 
 part 'address.g.dart';
 
-@JsonSerializable()
 class Address {
   final String id;
   final DateTime? CreatedAt;

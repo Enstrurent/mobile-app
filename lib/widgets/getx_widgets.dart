@@ -35,27 +35,29 @@ Widget dialogContent(
       required String nextText,
       VoidCallback? backOnClick,
       VoidCallback? nextOnClick}) =>
-    Card(
-        margin: EdgeInsets.symmetric(horizontal: 50, vertical: 320),
-        color: Get.theme.backgroundColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(headline,
+    ClipRRect(
+      borderRadius: BorderRadius.circular(30),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            child: Text(headline,
                 style: Get.textTheme.bodyText1),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Button(
-                    text: backText,
-                    onClick: backOnClick,
-                    buttonColor: Get.theme.accentColor),
-                Button(
-                    text: nextText,
-                    onClick: nextOnClick,
-                    buttonColor: Get.theme.primaryColor)
-              ],
-            )
-          ],
-        ));
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Button(
+                  text: backText,
+                  onClick: backOnClick,
+                  buttonColor: Get.theme.accentColor),
+              Button(
+                  text: nextText,
+                  onClick: nextOnClick,
+                  buttonColor: Get.theme.primaryColor)
+            ],
+          )
+        ],
+      ),
+    );

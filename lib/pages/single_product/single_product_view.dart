@@ -9,6 +9,8 @@ class SingleProductView extends StatelessWidget {
   final SingleProductController _controller =
       Get.put(SingleProductController());
 
+  SingleProductView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,30 +67,36 @@ class SingleProductView extends StatelessWidget {
           ),
         ),
       ),
-      bottomSheet: Container(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        color: Get.theme.appBarTheme.backgroundColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Visibility(
-              visible: _controller.product.isOpenToSell,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 30),
+      bottomSheet: Visibility(
+        visible: !_controller.renterPreview,
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          color: Get.theme.appBarTheme.backgroundColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Visibility(
+                visible: _controller.product.isOpenToSell,
                 child: w.Button(
                     buttonColor: Get.theme.accentColor,
                     onClick: null,
                     text: "Satın Al"),
               ),
-            ),
-            Visibility(
-              visible: _controller.product.isRental,
-              child: w.Button(
-                  buttonColor: Get.theme.primaryColor,
-                  onClick: null,
-                  text: "KİRALA"),
-            )
-          ],
+              Visibility(
+                  visible: _controller.product.isRental &&
+                      _controller.product.isOpenToSell,
+                  child: SizedBox(
+                    width: 30,
+                  )),
+              Visibility(
+                visible: _controller.product.isRental,
+                child: w.Button(
+                    buttonColor: Get.theme.primaryColor,
+                    onClick: _controller.rentProductClick,
+                    text: "KİRALA"),
+              )
+            ],
+          ),
         ),
       ),
     );

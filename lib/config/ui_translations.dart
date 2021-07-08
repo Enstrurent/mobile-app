@@ -44,6 +44,9 @@ class UITranslations extends Translations {
           "take_from_store": "Mağazadan Teslim Al",
           "select_delivery_types": "Teslimat türlerini seçiniz",
           "orders":"SİPARİŞLER",
+          "unauth_err":"Kimlik doğrulama sorunu",
+          "product_not_found_err": "Ürün envanterden kaldırılmış."
+
         },
         "en_US": {
           "products_title": "INSTRUMENTS",
@@ -85,7 +88,9 @@ class UITranslations extends Translations {
           "delivery_by_cargo": "Delivery by cargo",
           "take_from_store": "Take from the store",
           "select_delivery_types": "Select delivery types",
-          "orders":"ORDERS"
+          "orders":"ORDERS",
+          "unauth_err":"Failed to authenticate.",
+          "product_not_found_err": "Product has been deleted."
         },
       };
 }

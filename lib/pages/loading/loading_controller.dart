@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:enstrurent/services/auth.dart';
 import 'package:enstrurent/services/http_request.dart';
 import 'package:enstrurent/services/secure_store.dart';
@@ -17,7 +15,6 @@ class LoadingController extends GetxController {
 
   _navigateToPage() async {
     var role = await _auth.validateCurrentUser();
-    log(role.toString(), name: "Role");
     roleString.forEach((key, value) {
       if (role == key) Get.offNamed("/$value");
     });

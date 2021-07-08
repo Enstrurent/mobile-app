@@ -1,3 +1,4 @@
+import 'package:enstrurent/models/product.dart';
 import 'package:enstrurent/pages/products/products_widgets/build_product_card.dart';
 import 'package:enstrurent/pages/renter/inventory/inventory_controller.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class InventoryView extends StatelessWidget {
                     color: Get.theme.primaryColor,
                     size: 60,
                   ))
-                : StaggeredGridView.countBuilder(
+                : (_controller.products.isNotEmpty ? StaggeredGridView.countBuilder(
                     crossAxisCount: 2,
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 12,
@@ -39,8 +40,10 @@ class InventoryView extends StatelessWidget {
                     itemBuilder: (context, index) => BuildProductCard(
                       product: _controller.products[index],
                       pageName: "/editable_product",
+                      onLongPress: () async => _controller.longPressDelete(
+                          (_controller.products[index] as Product).id),
                     ),
-                  ),
+                  ): Center(child: Text("Envanter boş"),)),
           ),
         ),
       );

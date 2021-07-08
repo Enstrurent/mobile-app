@@ -10,20 +10,19 @@ class SingleProductController extends GetxController {
   Map arguments = Get.arguments;
   late Product product;
   RxList<Widget> photoCards = RxList<Widget>();
-
+  bool renterPreview = false;
   @override
   void onInit() {
     super.onInit();
     product = arguments["product"];
+    renterPreview = arguments["renterPreview"] ?? false;
     product.imageNames.forEach((element) =>
-        photoCards.add(_imageCard(HttpRequest.imageBaseUrl + element))
-    );
+        photoCards.add(_imageCard(HttpRequest.imageBaseUrl + element)));
   }
 
   get productName => "${product.brand} ${product.model} ${product.category}";
 
-  Widget _imageCard(String imageURL) =>
-      Card(
+  Widget _imageCard(String imageURL) => Card(
         child: CachedNetworkImage(
           progressIndicatorBuilder: (context, url, downloadProgress) =>
               LinearProgressIndicator(
@@ -37,22 +36,17 @@ class SingleProductController extends GetxController {
 
   rentProductClick() async {
     if (await Auth.validateClient()) {
-
     } else {
-      Get.dialog(dialogContent(
-          headline: "Müşteri olarak giriş yapınız",
-          backText: "KAPAT",
-          nextText: "GİRİŞ YAP",
-      backOnClick: () => Get.back(),)
-      );
+      await Get.dialog(notClientDialog());
     }
   }
 
-  purchaseProductClick() async {
+  purchaseProductClick() async {}
 
-  }
-
-  notClientDialog() {
-
-  }
+  Widget notClientDialog() => dialogContent(
+      headline: "Müşteri olarak giriş yapınız",
+      backText: "KAPAT",
+      nextText: "GİRİŞ YAP",
+      backOnClick: () => Get.back(),
+      nextOnClick: () => Get.toNamed("/login"));
 }
