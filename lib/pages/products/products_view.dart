@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:enstrurent/models/product.dart';
@@ -11,8 +10,6 @@ import "package:flutter/material.dart";
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-
-part 'products_widgets/settings_button.dart';
 
 part 'products_widgets/bottom_info_card.dart';
 
@@ -34,7 +31,7 @@ class ProductsView extends StatelessWidget {
             IconButton(
                 icon:
                     Icon(CupertinoIcons.gear_alt, color: Get.theme.canvasColor),
-                onPressed: () => Get.bottomSheet(SettingsButton()))
+                onPressed: () => Get.bottomSheet(widgets.SettingsButton()))
           ],
         ),
         drawer: ProductDrawer(),

@@ -21,6 +21,7 @@ class SingleProductView extends StatelessWidget {
                   Get.theme.appBarTheme.titleTextStyle!.copyWith(fontSize: 20)),
           centerTitle: true),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.only(top: 12),
           child: Column(
@@ -79,7 +80,7 @@ class SingleProductView extends StatelessWidget {
                 visible: _controller.product.isOpenToSell,
                 child: w.Button(
                     buttonColor: Get.theme.accentColor,
-                    onClick: null,
+                    onClick: _controller.purchaseProductClick,
                     text: "Satın Al"),
               ),
               Visibility(

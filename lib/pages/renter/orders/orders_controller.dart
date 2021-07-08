@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:enstrurent/models/date_range.dart';
 import 'package:enstrurent/models/order_base.dart';
 import 'package:enstrurent/models/product.dart';
 import 'package:enstrurent/models/purchase_order.dart';
@@ -65,4 +66,15 @@ class OrdersController extends GetxController {
       getSnackBar("error".tr, "went_wrong".tr);
     }
   }
+
+  String? getPriceText(OrderBase order) {
+    if (order is RentOrder) return "Kiralama Ücreti: " + (getNumDaysForRent(order.rented_date_range) * order.renting_price).toString();
+    else if(order is PurchaseOrder) return "Ücret ${order.price}TL";
+  }
+}
+
+int getNumDaysForRent(DateRange range) {
+  var start = DateTime.parse(range.start);
+  var end = DateTime.parse(range.start);
+  return (end.difference(start).inHours / 24).round() + 1 ;
 }

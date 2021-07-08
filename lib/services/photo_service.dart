@@ -75,7 +75,7 @@ class PhotoService {
             children: [
               Button(
                   icon: Icon(CupertinoIcons.camera),
-                  text: "Kamera",
+                  text: "camera".tr,
                   onClick: () async {
                     file = await PhotoService.getImage(ImageSource.camera);
                     Get.back();
@@ -86,7 +86,7 @@ class PhotoService {
               ),
               Button(
                   icon: Icon(CupertinoIcons.photo_fill_on_rectangle_fill),
-                  text: "Dahili Depolama",
+                  text: "internal_storage".tr,
                   onClick: () async {
                     file = await PhotoService.getImage(ImageSource.gallery);
                     Get.back();
