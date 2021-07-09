@@ -51,7 +51,21 @@ class UITranslations extends Translations {
           "show_address": "ADRESİ GÖRÜNTÜLE",
           "change": "DEĞİŞTİR",
           "camera": "KAMERA",
-          "internal_storage": "DAHİLİ DEPOLAMA"
+          "internal_storage": "DAHİLİ DEPOLAMA",
+          "canceled":"İptal Edildi",
+          "new_order":"Yeni Sipariş",
+          "ready":"Hazır",
+          "on_delivery":"Teslim Ediliyor",
+          "arrived":"Teslimat Ulaştı",
+          "completed":"Tamamlandı",
+          "order_date": "Sipariş tarihi",
+          "status": "Durum",
+          "price": "Ücret",
+          "renting_price": "Kiralama ücreti",
+          "cancel_order": "Sipariş İptal",
+          "preview_product": "Ürünü Önizle",
+          "update_status": "Durumu Güncelle"
+
         },
         "en_US": {
           "products_title": "INSTRUMENTS",
@@ -101,7 +115,20 @@ class UITranslations extends Translations {
           "show_address": "SHOW ADDRESS",
           "change": "CHANGE",
           "camera": "CAMERA",
-          "internal_storage": "INTERNAL STORAGE"
+          "internal_storage": "INTERNAL STORAGE",
+          "canceled":"Canceled",
+          "new_order":"New Order",
+          "ready":"Ready",
+          "on_delivery":"On Delivery",
+          "arrived":"Delivered",
+          "completed":"Completed",
+          "order_date": "Order date",
+          "status": "Status",
+          "price": "price",
+          "renting_price": "Renting price",
+          "cancel_order": "Cancel Order",
+          "preview_product": "Preview",
+          "update_status": "Update Status"
         },
       };
 }

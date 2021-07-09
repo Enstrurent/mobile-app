@@ -21,7 +21,7 @@ PurchaseOrder _$PurchaseOrderFromJson(Map<String, dynamic> json) {
     json['address_id'] as String?,
     json['delivery_type'] as String?,
     json['payment_method'] as String?,
-    json['order_status'] as String?,
+    OrderBase.toOrderStatus((json['order_status'] as int?) ?? -2),
     (json['price'] as num).toDouble(),
   );
 }
