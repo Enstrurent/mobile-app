@@ -1,5 +1,6 @@
 import 'package:enstrurent/models/date_range.dart';
 import 'package:enstrurent/models/order_base.dart';
+import 'package:enstrurent/models/order_status.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rent_order.g.dart';
@@ -15,11 +16,11 @@ class RentOrder extends OrderBase {
   final String? address_id;
   final String? delivery_type;
   final String? payment_method;
-  final String? order_status;
+  final OrderStatus? order_status;
   final List<String>? initial_image_names;
   final List<String>? final_image_names;
   final double deposit_price;
-  final double rentring_price;
+  final double renting_price;
   final DateRange rented_date_range;
 
   RentOrder(
@@ -36,7 +37,7 @@ class RentOrder extends OrderBase {
       this.initial_image_names,
       this.final_image_names,
       this.deposit_price,
-      this.rentring_price,
+      this.renting_price,
       this.rented_date_range)
       : super(id, CreatedAt, UpdatedAt, DeletedAt, product_id, client_id,
             address_id, delivery_type, payment_method, order_status);
