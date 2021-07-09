@@ -102,7 +102,7 @@ class OrdersView extends StatelessWidget {
           ],
           actions: [
             Visibility(
-              visible: order.order_status != OrderStatus.ARRIVED,
+              visible: order.order_status!.numValue <= OrderStatus.ARRIVED.numValue,
               replacement: blockedIconSlide,
               child: IconSlideAction(
                 caption: "cancel_order".tr,
