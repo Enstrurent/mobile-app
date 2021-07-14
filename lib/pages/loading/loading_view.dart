@@ -16,8 +16,14 @@ class LoadingView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
+              margin: EdgeInsets.fromLTRB(0, 0,30, 0),
               child: Text("ENSTRURENT",
                   style: Get.textTheme.headline3),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(190, 0, 0, 0),
+              child: Text("RENTER",
+                  style: Get.textTheme.headline3!.copyWith(fontSize: 22)),
             ),
             SizedBox(height: 70),
             SpinKitSquareCircle(color: Get.theme.primaryColor, size: 30)
