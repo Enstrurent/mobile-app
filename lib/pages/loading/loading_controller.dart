@@ -9,8 +9,9 @@ class LoadingController extends GetxController {
   SecureStore secure = Get.put(SecureStore(), permanent: true);
   HttpRequest request = Get.put(HttpRequest(), permanent: true);
 
-  callNavigate() => SchedulerBinding.instance!.addPostFrameCallback((_) {
-        _navigateToPage();
+  callNavigate() =>
+      Future.delayed(Duration(seconds: 1, milliseconds: 500), () async {
+        await _navigateToPage();
       });
 
   _navigateToPage() async {

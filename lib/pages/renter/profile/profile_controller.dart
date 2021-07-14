@@ -55,8 +55,8 @@ class ProfileController extends GetxController {
         renterAddress = Address.fromJson(response.body);
       else
         log("Error on getting address profile data: ${response.body}");
-    } else
-      log("There's no registered address");
+    } else if (renter!.address_id == "")
+      log("There's no registered address ");
   }
 
   changePhoto(ProfilePhoto type) async {

@@ -1,5 +1,6 @@
 import 'package:enstrurent/pages/login/login_controller.dart';
 import 'package:enstrurent/widgets/index.dart' as widgets;
+import 'package:enstrurent/widgets/settings_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -12,6 +13,10 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(CupertinoIcons.gear_alt, color: Get.theme.canvasColor),
+              onPressed: () => Get.bottomSheet(SettingsButton(),
+                  barrierColor: Get.theme.backgroundColor.withOpacity(0.9))),
           centerTitle: true,
           title: Text("login".tr, style: Get.theme.appBarTheme.titleTextStyle)),
       backgroundColor: Get.theme.backgroundColor,
@@ -41,6 +46,19 @@ class LoginView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(width: 10),
+                  Obx(
+                        () => Visibility(
+                      visible: !_controller.onWait.value,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: widgets.Button(
+                          onClick: () => Get.toNamed("/sign_up"),
+                          buttonColor: Get.theme.accentColor,
+                          text: "sign_up".tr,
+                        ),
+                      ),
+                    ),
+                  ),
                   Obx(
                     () => Visibility(
                       visible: !_controller.onWait.value,

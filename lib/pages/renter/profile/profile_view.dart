@@ -64,5 +64,5 @@ class ProfileView extends StatelessWidget {
       );
 
   Future<dynamic> addressSheet() =>
-      Get.bottomSheet(AddressSheet(), enableDrag: true, settings: RouteSettings(arguments: {}));
+      Get.bottomSheet(AddressSheet(), enableDrag: true);
 }
