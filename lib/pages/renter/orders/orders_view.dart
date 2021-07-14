@@ -73,7 +73,7 @@ class OrdersView extends StatelessWidget {
       child: Visibility(
         visible: order.order_status != OrderStatus.CANCELED,
         replacement: ImageFiltered(
-          imageFilter: ImageFilter.blur(sigmaX: 0.8, sigmaY: 0.8),
+          imageFilter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
           child: listTile,
         ),
         child: Slidable(

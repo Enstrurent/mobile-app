@@ -8,7 +8,7 @@ import 'package:enstrurent/widgets/index.dart';
 enum Roles { GUEST, RENTER, CLIENT }
 
 Map<Roles, String> roleString = {
-  Roles.GUEST: "guest",
+  Roles.GUEST: "login",
   Roles.RENTER: "renter",
   Roles.CLIENT: "client"
 };
