@@ -8,7 +8,7 @@ enum Request { POST, GET, DELETE, PUT }
 
 class HttpRequest extends GetxController {
   SecureStore _store = Get.find();
-  static String host = "***REMOVED***";
+  static String host = "";
   var dioObj = dio.Dio(); //  For sending multipart files with form-data.
   String token = "";
   Map<String, String> headers = {
